@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+package realworld.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "realworld_02/api/realworld/v1;v1";
+
+service Realworld {
+  rpc Register(RegisterRequest) returns (UserReply) {
+    option (google.api.http) = {
+      post: "/api/users"
+      body: "*"
+    };
+  }
+  rpc Login(LoginRequest) returns (UserReply) {
+    option (google.api.http) = {
+      post: "/api/users/login"
+      body: "*"
+    };
+  }
+}
+
+message RegisterRequest {
+  message User {
+    string email = 1;
+    string username = 2;
+    string password = 3;
+  }
+  User user = 1;
+}
+
+message LoginRequest {
+  message User {
+    string email = 1;
+    string password = 2;                     
+  } 
+  User user = 1; 
+}
+
+message UserReply {
+  message User {
+    string email = 1;
+    string token = 2;
+    string username = 3;
+    string bio = 4;
+    string image = 5;
+  }
+  User user = 1;
+}

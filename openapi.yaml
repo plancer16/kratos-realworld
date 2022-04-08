@@ -1,0 +1,92 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: Realworld API
+    version: 0.0.1
+paths:
+    /api/users:
+        post:
+            tags:
+                - Realworld
+            operationId: Realworld_Register
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/RegisterRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserReply'
+    /api/users/login:
+        post:
+            tags:
+                - Realworld
+            operationId: Realworld_Login
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/LoginRequest'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/UserReply'
+components:
+    schemas:
+        LoginRequest:
+            type: object
+            properties:
+                user:
+                    $ref: '#/components/schemas/LoginRequest_User'
+        LoginRequest_User:
+            type: object
+            properties:
+                email:
+                    type: string
+                password:
+                    type: string
+        RegisterRequest:
+            type: object
+            properties:
+                user:
+                    $ref: '#/components/schemas/RegisterRequest_User'
+        RegisterRequest_User:
+            type: object
+            properties:
+                email:
+                    type: string
+                username:
+                    type: string
+                password:
+                    type: string
+        UserReply:
+            type: object
+            properties:
+                user:
+                    $ref: '#/components/schemas/UserReply_User'
+        UserReply_User:
+            type: object
+            properties:
+                email:
+                    type: string
+                token:
+                    type: string
+                username:
+                    type: string
+                bio:
+                    type: string
+                image:
+                    type: string
+tags:
+    - name: Realworld
