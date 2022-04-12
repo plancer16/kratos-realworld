@@ -2,6 +2,8 @@
 
 - 使用kratos模板创建工程，实现注册登录功能
 
+注意：service要实现proto生成的grpc_pb.go中Server接口的方法，方法入参和返回值要一一对应
+
 step：
 
 1、kratos根据layout创建工程
